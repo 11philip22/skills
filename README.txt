@@ -42,14 +42,14 @@ Current Structure
 - `hero-generator-cli/SKILL.md` contains the workflow for creating hero banner PNGs
 - `hero-generator-cli/references/` contains supporting CLI reference material
 
-References
-----------
-
-- https://github.com/mattpocock/skills
-
 Notes
 -----
 
 - Skills are task-specific and should not duplicate broad coding rules
 - Supporting references should stay close to the skill that uses them
 - Keep generated outputs outside this skills repository unless they are intentional examples or fixtures
+
+References
+----------
+
+- https://github.com/mattpocock/skills
