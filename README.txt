@@ -79,3 +79,4 @@ Reference
 
 - https://github.com/mattpocock/skills
 - https://github.com/github/awesome-copilot/tree/main/skills
+- https://github.com/addyosmani/agent-skills
