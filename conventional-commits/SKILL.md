@@ -234,7 +234,7 @@ When reviewing or writing a commit message, verify:
 
 ## Anti-Patterns
 
-| ❌ Wrong | ✅ Correct | Rule violated |
+| Wrong | Correct | Rule violated |
 |---------|-----------|---------------|
 | `Fix: something` with capital F | `fix: something` | Be consistent; case-insensitive but choose one |
 | `feat:something` (no space) | `feat: something` | Space after colon is REQUIRED |

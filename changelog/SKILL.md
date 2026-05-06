@@ -128,7 +128,7 @@ When the user wants to cut a release:
 
 ## Anti-Patterns (Never Do These)
 
-| ❌ Bad | ✅ Good |
+| Bad | Good |
 |---|---|
 | Paste raw `git log` output | Curate notable changes written for end users |
 | `## 1.2.0` (no brackets, no date) | `## [1.2.0] - 2024-06-01` |
