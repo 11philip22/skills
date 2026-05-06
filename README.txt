@@ -1,55 +1,81 @@
-OpenCode Skills Repository
-==========================
+OpenCode Skills
+===============
 
-This repository contains reusable skill definitions for OpenCode.
-OpenCode loads these skills to provide specialized instructions and workflows for specific tasks.
+Reusable skill definitions for OpenCode and Codex-style coding agents. Each
+skill is a small, task-specific instruction pack that helps the agent choose the
+right workflow, constraints, and supporting references for a request.
 
-What This Repo Contains
------------------------
-
-- `hero-generator-cli/` for generating README banner PNGs with the `hero-generator` CLI
-
-How OpenCode Uses These Files
------------------------------
-
-- Reads skill directories from the configured OpenCode skills location
-- Uses each skill's `SKILL.md` file as the main instruction document
-- Loads a skill when a task matches the skill description
-- Allows skills to include references and supporting files in subdirectories
-
-Recommended Use
+Included Skills
 ---------------
 
-- Put this repo, or a symlink to it, under `~/.config/opencode/skills/`
-- Keep each skill in its own directory
-- Store task-specific references under that skill's directory
+- `changelog/` - Create, update, and review `CHANGELOG.md` files using Keep a
+  Changelog and Semantic Versioning conventions.
+- `create-readme/` - Create concise, useful project `README.md` files after
+  reviewing the project structure and audience.
+- `hero-generator-cli/` - Generate deterministic README banner PNGs with the
+  published `hero-generator` CLI.
 
-Example:
-
-  ln -s /path/to/this/repo ~/.config/opencode/skills
-
-Skill Design Conventions In This Repo
--------------------------------------
-
-- Keep skill descriptions specific enough for OpenCode to select the right skill
-- Put the main workflow in `SKILL.md`
-- Put detailed references in a `references/` directory when exact values or longer documentation are useful
-- Prefer concise, actionable instructions over broad tutorials
-
-Current Structure
+Repository Layout
 -----------------
 
-- `hero-generator-cli/SKILL.md` contains the workflow for creating hero banner PNGs
-- `hero-generator-cli/references/` contains supporting CLI reference material
+Each skill lives in its own directory:
+
+  skill-name/
+    SKILL.md
+    references/
+
+`SKILL.md` is the main instruction document. Optional `references/` files hold
+longer lookup material, command references, examples, or exact values that do
+not need to be loaded for every task.
+
+Current structure:
+
+- `changelog/SKILL.md`
+- `create-readme/SKILL.md`
+- `hero-generator-cli/SKILL.md`
+- `hero-generator-cli/references/cli-reference.md`
+
+Install
+-------
+
+Put this repository, or a symlink to it, in your OpenCode skills directory:
+
+```bash
+ln -s /path/to/this/repo ~/.config/opencode/skills
+```
+
+If you use a different agent or runtime, point its skills configuration at this
+repository or copy the individual skill directories into the location it scans.
+
+How Skills Are Loaded
+---------------------
+
+OpenCode reads the available skill directories, inspects each `SKILL.md`, and
+loads a skill when the user's task matches its `name` or `description`.
+Supporting references stay local to the skill and are loaded only when the
+workflow needs them.
+
+Authoring Conventions
+---------------------
+
+- Keep the frontmatter `name` stable and descriptive.
+- Make the `description` specific enough for reliable skill selection.
+- Put the primary workflow in `SKILL.md`.
+- Move long tables, examples, and exact command references into `references/`.
+- Keep instructions practical and task-focused.
+- Avoid duplicating broad coding-agent behavior that belongs in system or
+  project-level instructions.
 
 Notes
 -----
 
-- Skills are task-specific and should not duplicate broad coding rules
-- Supporting references should stay close to the skill that uses them
-- Keep generated outputs outside this skills repository unless they are intentional examples or fixtures
+- Generated outputs should usually stay outside this repository unless they are
+  intentional examples or fixtures.
+- Skills should remain independent. A skill may reference another workflow, but
+  it should not require loading unrelated skills to perform its core task.
 
-References
-----------
+Reference
+---------
 
 - https://github.com/mattpocock/skills
+- https://github.com/github/awesome-copilot/tree/main/skills
